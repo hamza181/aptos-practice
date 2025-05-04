@@ -1,4 +1,3 @@
-// const { AccountAddress, Account } = require("@aptos-labs/ts-sdk");
 import {
   AccountAddress,
   Account,
@@ -10,7 +9,6 @@ import {
 
 const aptos = new Aptos(new AptosConfig({ network: Network.MAINNET }));
 
-// Reuse same Aptos instance to utilize cookie based sticky routing
 function aptosClient() {
   return aptos;
 }
