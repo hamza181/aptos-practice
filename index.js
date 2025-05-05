@@ -30,7 +30,7 @@ const getAptosAccount = async () => {
   return account;
 };
 
-export const simulateTransaction = async (payload) => {
+export const simulateTransaction = async (payload, options) => {
   try {
     const aptosAccount = await getAptosAccount();
 
@@ -39,10 +39,7 @@ export const simulateTransaction = async (payload) => {
       data: {
         ...payload,
       },
-      options: {
-        maxGasAmount: myBalance - (sendingAmount + 10),
-        // maxGasAmount: 20,
-      },
+      options,
     });
     const [userTransactionResponse] = await aptos.transaction.simulate.simple({
       signerPublicKey: aptosAccount?.publicKey,
@@ -75,10 +72,14 @@ let payload = {
   function: "0x1::coin::transfer",
   functionArguments: [receiverAddress, sendingAmount],
   typeArguments: ["0x1::aptos_coin::AptosCoin"],
-//   options: {
-//     // maxGasAmount: myBalance - (sendingAmount + 1000),
-//     maxGasAmount: 20,
-//   },
+
 };
 
-let simulateResult = await simulateTransaction(payload);
+const options = {
+  // maxGasAmount: myBalance - (sendingAmount + 1000),
+  maxGasAmount: 20,
+};
+
+let simulateResult = await simulateTransaction(payload, options);
+const networkFee = simulateResult.gas_used * simulateResult.gas_unit_price;
+console.log('🚀 ~ networkFee:', networkFee);
