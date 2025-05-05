@@ -17,7 +17,6 @@ dotenv.config({
 });
 
 const { PRIVATE_KEY } = process.env;
-console.log('🚀 ~ PRIVATE_KEY:', PRIVATE_KEY);
 
 const aptos = new Aptos(new AptosConfig({ network: Network.MAINNET }));
 
