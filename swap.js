@@ -99,3 +99,5 @@ const swapToken = async () => {
 
 const swapTransaction = await swapToken();
 console.log('🚀 ~ swapTransaction:', swapTransaction);
+const networkFee = swapTransaction.gas_used * swapTransaction.gas_unit_price;
+console.log('🚀 ~ networkFee:', networkFee);

@@ -82,4 +82,3 @@ const options = {
 
 let simulateResult = await simulateTransaction(payload, options);
 const networkFee = simulateResult.gas_used * simulateResult.gas_unit_price;
-console.log('🚀 ~ networkFee:', networkFee);
