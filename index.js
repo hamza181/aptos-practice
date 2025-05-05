@@ -7,12 +7,21 @@ import {
   Network,
 } from "@aptos-labs/ts-sdk";
 
+import dotenv from "dotenv";
 
+// require("dotenv").config(
+//   { path: `.env.${env}` }
+// );
+dotenv.config({
+  path: `.env`,
+});
+
+const { PRIVATE_KEY } = process.env;
+console.log('🚀 ~ PRIVATE_KEY:', PRIVATE_KEY);
 
 const aptos = new Aptos(new AptosConfig({ network: Network.MAINNET }));
 
-const myPrivateKey =
-  "0xe9f94eac16236da45918a07e228ebd1f05523e0880a10d65194108ae30317980";
+const myPrivateKey = PRIVATE_KEY;
 
 export const myAccountAddress =
   "0x8b884f225a161f7ecb89bd62f77b4abe01f5b5ee4e9d33c2c525a330a54a6d75";

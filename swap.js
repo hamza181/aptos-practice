@@ -92,7 +92,7 @@ const swapToken = async () => {
   //   functionArguments: swapInfoPetra?.quotes[0]?.payload?.functionArguments,
   // };
   const res = await simulateTransaction(payload, {
-    maxGasAmount: 20,
+    maxGasAmount: 750,
   });
   return res;
 };
