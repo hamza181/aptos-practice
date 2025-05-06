@@ -23,7 +23,7 @@ const aptos = new Aptos(new AptosConfig({ network: Network.MAINNET }));
 const myPrivateKey = PRIVATE_KEY;
 
 export const myAccountAddress =
-  "0x8b884f225a161f7ecb89bd62f77b4abe01f5b5ee4e9d33c2c525a330a54a6d75";
+  "0xcb4c842efdde18072d22c03d34a886fed5c4e79e41ba8d31948900c04782b680";
 
 const receiverAddress =
   "0x403dfa404945d8711f9ea7477ac36a283cdf6a9515c19af4a8f7b9fc1e5ba094";
