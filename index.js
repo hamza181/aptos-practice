@@ -16,7 +16,7 @@ dotenv.config({
   path: `.env`,
 });
 
-const { PRIVATE_KEY } = process.env;
+export const { PRIVATE_KEY } = process.env;
 
 const aptos = new Aptos(new AptosConfig({ network: Network.MAINNET }));
 
