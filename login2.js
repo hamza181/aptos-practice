@@ -49,3 +49,4 @@ const publicKey = account.publicKey.toString();
 const wallet_address = account.accountAddress.toString();
 // const encodedMessage = nacl.util.encodeBase64(messageBuffer);
 const encodedMessage = encodeBase64(messageBuffer);
+console.log('🚀 ~ login2.js:52 ~ encodedMessage:', encodedMessage);
