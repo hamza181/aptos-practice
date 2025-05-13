@@ -4,15 +4,13 @@ import naclUtil from "tweetnacl-util";
 const { encodeBase64 } = naclUtil;
 import { Account, AccountAddress, Ed25519PrivateKey, PrivateKey } from "@aptos-labs/ts-sdk";
 import { HexString } from "aptos";
-// require("dotenv").config(
-//   { path: `.env.${env}` }
-// );
+
 dotenv.config({
   path: `.env`,
 });
 
 export const { PRIVATE_KEY } = process.env;
-const myAccountAddress =
+const walletAddress =
   "0xcb4c842efdde18072d22c03d34a886fed5c4e79e41ba8d31948900c04782b680";
 
 const makeId = (length) => {
@@ -26,7 +24,7 @@ const makeId = (length) => {
 
 const getAptosAccount = async () => {
   const privateKey = new Ed25519PrivateKey(PRIVATE_KEY);
-  const address = AccountAddress.from(myAccountAddress);
+  const address = AccountAddress.from(walletAddress);
   if (!privateKey || !address) {
     throw new Error("No private key or address found in local storage");
   }
@@ -39,6 +37,7 @@ const adminPrivateKey = Buffer.from(privateKey.slice(2), "hex");
 const keyPair = nacl.sign.keyPair.fromSeed(adminPrivateKey);
 const nonce = makeId(16);
 const message = "Sign Up Into Loonies" + nonce;
+console.log('🚀 ~ message:', message);
 
 const messageBuffer = Buffer.from(message, "utf-8");
 const signature = nacl.sign.detached(messageBuffer, keyPair.secretKey);
