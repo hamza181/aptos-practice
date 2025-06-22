@@ -6,6 +6,7 @@ import {
   Ed25519PrivateKey,
 } from "@aptos-labs/ts-sdk";
 
+const { PRIVATE_KEY } = process.env;
 /**
  * Script to simulate a specific APT transfer using the provided private key
  */
@@ -16,13 +17,11 @@ async function simulateSpecificTransfer() {
     const aptos = new Aptos(config);
 
     // Private key and addresses
-    const senderPrivateKeyHex =
-      "0xe9f94eac16236da45918a07e228ebd1f05523e0880a10d65194108ae30317980";
     const receiverAddress =
       "0x8b884f225a161f7ecb89bd62f77b4abe01f5b5ee4e9d33c2c525a330a54a6d75";
 
     // Convert private key hex to Ed25519PrivateKey object
-    const privateKey = new Ed25519PrivateKey(senderPrivateKeyHex);
+    const privateKey = new Ed25519PrivateKey(PRIVATE_KEY);
 
     // Create account from private key
     const senderAccount = await Account.fromPrivateKey({ privateKey });
